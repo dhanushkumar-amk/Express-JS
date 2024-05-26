@@ -1,5 +1,4 @@
-/** declare the express  */const express = require('express');
-const app = express();
+/** declare the express  */ const express = require('express');const app = express();
 
 /** body parser  is used to convert the data into  readable data for the system  */
 const bodyParser = require('body-parser');
@@ -11,13 +10,14 @@ app.use(bodyParser.urlencoded());
 /** using use method has 8 types  */
 /** next() middle ware is used to tell the server to move the next request here the next request is second middle ware  */
 
-app.use('/add-product', (req, res, next) => {
+app.get('/add-product', (req, res, next) => {
   res.send(
     '<h1>Add Product</h1>  <form action="/store-product" method="post"><input type="text" name="title"><input type="submit" value="Submit"></form>'
   );
 });
 
-app.use('/store-product', (req, res, next) => {
+/** app.post means if the only works post method request  */
+app.post('/store-product', (req, res, next) => {
   console.log('Form data : ', req.body);
   res.send('<h1> form submitted</h1>');
 });
