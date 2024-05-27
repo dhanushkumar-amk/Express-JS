@@ -1,32 +1,48 @@
-/** declare the express  */ const express = require('express');const app = express();
+/** declare the express  */ const express = require('express');
+const app = express();
+const path = require('path');
 
 /** body parser  is used to convert the data into  readable data for the system  */
 const bodyParser = require('body-parser');
-
 app.use(bodyParser.urlencoded());
+
+const adminRoutes = require('./Routes/admin');
+app.use('/admin', adminRoutes);
+
+const shopRoutes = require('./Routes/shop');
+app.use(shopRoutes);
+
+/** adding static css */
+
+app.use(express.static(path.join(__dirname, 'css')));
+
+/** if there is no page then return 404 page */
+app.use((req, res, next) => {
+  res.status(404).sendfile(path.join(__dirname, 'views', '404.html'));
+});
 /* const http = require('http'); */
 
 /** use() is a one of the middleware */
 /** using use method has 8 types  */
-/** next() middle ware is used to tell the server to move the next request here the next request is second middle ware  */
 
-app.get('/add-product', (req, res, next) => {
-  res.send(
-    '<h1>Add Product</h1>  <form action="/store-product" method="post"><input type="text" name="title"><input type="submit" value="Submit"></form>'
-  );
-});
+// app.get('/add-product', (req, res, next) => {
+//   res.send(
+//     '<h1>Add Product</h1>  <form action="/store-product" method="post"><input type="text" name="title"><input type="submit" value="Submit"></form>'
+//   );
+// });
 
 /** app.post means if the only works post method request  */
-app.post('/store-product', (req, res, next) => {
-  console.log('Form data : ', req.body);
-  res.send('<h1> form submitted</h1>');
-});
+// app.post('/store-product', (req, res, next) => {
+//   console.log('Form data : ', req.body);
+//   res.send('<h1> form submitted</h1>');
+// });
 
 /** always use root path in last because root path takes always first whenever you but / */
 // app.use('/', (req, res, next) => {
 //   res.send('<h1> First Page </h1>');
 //   console.log('First middle ware');
-// next();
+//   next();
+//   /** next() middle ware is used to tell the server to move the next request here the next request is second middle ware  */
 // });
 // app.use((res, req, next) => {
 //   console.log('Second Middle ware');
