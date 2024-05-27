@@ -1,1 +1,21 @@
-{"name":"05tut","version":"1.0.0","description":"Node.js Web Server tutorial","main":"Express.js","scripts":{"start":"node Express","dev":"nodemon Express"},"author":"Dhanushkumar","license":"ISC","dependencies":{"body-parser":"^1.20.2","date-fns":"^2.23.0","express":"^4.19.2","uuid":"^8.3.2"},"devDependencies":{"nodemon":"^2.0.12"}}
+{  "name": "05tut",
+  "version": "1.0.0",
+  "description": "Node.js Web Server tutorial",
+  "main": "Express.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "author": "Dhanushkumar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "date-fns": "^2.23.0",
+    "express": "^4.19.2",
+    "pug": "^3.0.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

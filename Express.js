@@ -1,6 +1,8 @@
-/** declare the express  */ const express = require('express');
-const app = express();
+/** declare the express  */ const express = require('express');const app = express();
 const path = require('path');
+
+/** pug is a template engine */
+app.set('view engine', 'pug');
 
 /** body parser  is used to convert the data into  readable data for the system  */
 const bodyParser = require('body-parser');
